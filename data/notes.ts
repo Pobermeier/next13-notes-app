@@ -1,5 +1,3 @@
-import { v4 } from "uuid";
-
 export type Note = {
   id: string;
   createdAt: number;
@@ -12,14 +10,14 @@ const timeStampNow = new Date().getTime();
 
 const notes: Note[] = [
   {
-    id: v4(),
+    id: "snVToONcO5xDQakdIuDWW",
     createdAt: timeStampNow,
     updatedAt: timeStampNow,
     title: "Meeting Notes",
     body: `This is an example note. It contains **Markdown**!`,
   },
   {
-    id: v4(),
+    id: "m_LJ1lo7IdcNsNfs-CSF9",
     createdAt: timeStampNow,
     updatedAt: timeStampNow,
     title: "Make a thing",
@@ -27,7 +25,7 @@ const notes: Note[] = [
     Markdown. You can even [link to React's website!](https://www.reactjs.org).`,
   },
   {
-    id: v4(),
+    id: "elt8ORKjvTfD-XiwVggZj",
     createdAt: timeStampNow,
     updatedAt: timeStampNow,
     title:
