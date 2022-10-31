@@ -1,5 +1,7 @@
 This is a version of the [Server-Components Demo-Application](https://github.com/reactjs/server-components-demo) rebuild with Next.js 13.
 
+A live version of this project can be found [here](https://next13-notes-app.vercel.app/).
+
 ## Getting Started
 
 First, run the development server:
