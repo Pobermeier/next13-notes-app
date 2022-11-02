@@ -7,19 +7,14 @@ type Data = {
   data: Note[] | string;
 };
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>,
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   const id = nanoid();
 
   const title = req.body["title"];
   const body = req.body["body"];
 
   if (!title || !body) {
-    return res
-      .status(400)
-      .json({ success: false, data: "insufficient data provided" });
+    return res.status(400).json({ success: false, data: "insufficient data provided" });
   }
 
   const timeStampNow = new Date().getTime();

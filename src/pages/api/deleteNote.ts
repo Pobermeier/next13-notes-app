@@ -6,10 +6,7 @@ type Data = {
   data: boolean | string;
 };
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>,
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   const id = req.query["id"];
 
   if (!id) {
@@ -19,9 +16,7 @@ export default function handler(
   const foundNoteIndex = notes.findIndex((note) => note.id === id);
 
   if (foundNoteIndex === -1) {
-    return res
-      .status(404)
-      .json({ success: false, data: "no note with this id found" });
+    return res.status(404).json({ success: false, data: "no note with this id found" });
   }
 
   notes.splice(foundNoteIndex, 1);

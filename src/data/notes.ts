@@ -28,8 +28,7 @@ const notes: Note[] = [
     id: "elt8ORKjvTfD-XiwVggZj",
     createdAt: timeStampNow,
     updatedAt: timeStampNow,
-    title:
-      "A note with a very long title because sometimes you need more words",
+    title: "A note with a very long title because sometimes you need more words",
     body: `You can write all kinds of [amazing](https://en.wikipedia.org/wiki/The_Amazing)
     notes in this app! These note live on the server in the \`notes\` folder.
     
