@@ -9,6 +9,7 @@
     "format": "prettier --write ./src",
     "format:check": "prettier --check ./src",
     "start": "next start",
+    "ts-validate": "npx tsc --pretty --noEmit",
     "lint": "next lint"
   },
   "dependencies": {
