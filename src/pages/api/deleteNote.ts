@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import notes from "../../data/notes";
+import notes from "data/notes";
 
 type Data = {
   success: boolean;

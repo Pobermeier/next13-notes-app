@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { nanoid } from "nanoid";
-import notes, { Note } from "../../data/notes";
+import notes, { Note } from "data/notes";
 
 type Data = {
   success: boolean;
