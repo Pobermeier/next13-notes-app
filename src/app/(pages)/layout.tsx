@@ -1,4 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
+import NoteList from "app/(components)/NoteList";
 import "app/(styles)/globals.css";
+
+const NoteListComponent = NoteList as unknown as () => JSX.Element;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +14,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>Next13 Notes</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>{children}</body>
+      <body>
+        {" "}
+        <div className="main">
+          <section className="col sidebar">
+            <section className="sidebar-header">
+              <img
+                className="logo"
+                src="icons/svg/logo.svg"
+                width="22px"
+                height="20px"
+                alt=""
+                role="presentation"
+              />
+              <strong>Next13 Notes</strong>
+            </section>
+            <section className="sidebar-menu" role="menubar"></section>
+            <nav>
+              <NoteListComponent />
+            </nav>
+          </section>
+          <section className="col note-viewer">{children}</section>
+        </div>
+      </body>
     </html>
   );
 }
