@@ -306,6 +306,10 @@ ul.notes-list {
   max-height: 100px;
   transition: max-height 250ms ease-out;
   transform: scale(1);
+  color: initial;
+  text-decoration: none;
+  border: 1px solid var(--gray-60);
+  border-radius: 0.5rem;
 }
 .sidebar-note-list-item.note-expanded {
   max-height: 300px;
@@ -314,6 +318,16 @@ ul.notes-list {
 .sidebar-note-list-item.flash {
   animation-name: flash;
   animation-duration: 0.6s;
+}
+
+.sidebar-note-list-item:focus {
+  box-shadow: var(--outline-box-shadow);
+}
+.sidebar-note-list-item:hover,
+.sidebar-note-list-item:active {
+  background: var(--gray-90);
+  color: initial;
+  text-decoration: none;
 }
 
 .sidebar-note-open {
