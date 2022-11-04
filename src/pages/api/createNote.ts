@@ -2,12 +2,12 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { nanoid } from "nanoid";
 import notes, { Note } from "data/notes";
 
-type Data = {
+export type CreateNoteResponse = {
   success: boolean;
   data: Note[] | string;
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<CreateNoteResponse>) {
   const id = nanoid();
 
   const title = req.body["title"];

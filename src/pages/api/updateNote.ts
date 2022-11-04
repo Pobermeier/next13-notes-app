@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import notes, { Note } from "data/notes";
 
-type Data = {
+export type UpdateNoteResponse = {
   success: boolean;
   data: Note | string;
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<UpdateNoteResponse>) {
   const id = req.body["id"];
   const updatedTitle = req.body["title"] ?? "";
   const updatedBody = req.body["body"] ?? "";

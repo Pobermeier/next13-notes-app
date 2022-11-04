@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import notes, { Note } from "data/notes";
 
-type Data = {
+export type GetNoteResponse = {
   success: boolean;
   data: Note | string;
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<GetNoteResponse>) {
   const id = req.query["id"];
 
   if (!id) {
