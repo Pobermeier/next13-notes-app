@@ -31,7 +31,6 @@ const notes: Note[] = [
     title: "A note with a very long title because sometimes you need more words",
     body: `You can write all kinds of [amazing](https://en.wikipedia.org/wiki/The_Amazing)
     notes in this app! These note live on the server in the \`notes\` folder.
-    
     ![This app is powered by React](https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/React_Native_Logo.png/800px-React_Native_Logo.png)`,
   },
 ];

@@ -16,7 +16,7 @@ const TextWithMarkdown = ({ text }: TextWithMarkdownProps) => (
   <div
     className="text-with-markdown"
     dangerouslySetInnerHTML={{
-      __html: sanitizeHtml(marked(text), {
+      __html: sanitizeHtml(marked.parse(text), {
         allowedTags,
         allowedAttributes,
       }),
