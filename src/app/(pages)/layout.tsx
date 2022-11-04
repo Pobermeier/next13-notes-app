@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import NoteList from "app/(components)/NoteList";
-import "app/(styles)/globals.css";
+import "styles/globals.css";
 
 const NoteListComponent = NoteList as unknown as () => JSX.Element;
 
