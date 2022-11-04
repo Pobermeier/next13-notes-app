@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { Note } from "data/notes";
 import { GetNoteResponse } from "pages/api/getNote";
-import NotePreview from "app/(components)/NotePreview";
+import NotePreview from "components/NotePreview";
 
 type NotePageProps = {
   params: { id: string };

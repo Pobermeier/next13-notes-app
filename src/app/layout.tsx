@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Suspense } from "react";
-import NoteList from "app/(components)/NoteList";
-import NoteListSkeleton from "app/(components)/NoteListSkeleton";
+import NoteList from "components/NoteList";
+import NoteListSkeleton from "components/NoteListSkeleton";
 import "styles/globals.css";
 
 const NoteListComponent = NoteList as unknown as () => JSX.Element;
