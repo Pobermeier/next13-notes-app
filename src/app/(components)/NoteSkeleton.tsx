@@ -50,7 +50,7 @@ const NotePreviewSkeleton = () => (
   </div>
 );
 
-const NoteSkeleton = ({ isEditing }: NoteSkeletonProps) => {
+const NoteSkeleton = ({ isEditing = false }: NoteSkeletonProps) => {
   return isEditing ? <NoteEditorSkeleton /> : <NotePreviewSkeleton />;
 };
 
