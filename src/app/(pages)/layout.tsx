@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <section className="sidebar-header">
               <img
                 className="logo"
-                src="icons/svg/logo.svg"
+                src="/icons/svg/logo.svg"
                 width="22px"
                 height="20px"
                 alt=""
