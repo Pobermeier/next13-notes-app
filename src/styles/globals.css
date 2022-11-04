@@ -425,6 +425,7 @@ ul.notes-list {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 .note {
   background: var(--white);
