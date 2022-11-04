@@ -51,7 +51,11 @@ const NotePreviewSkeleton = () => (
 );
 
 const NoteSkeleton = ({ isEditing = false }: NoteSkeletonProps) => {
-  return isEditing ? <NoteEditorSkeleton /> : <NotePreviewSkeleton />;
+  return (
+    <section className="note-viewer">
+      {isEditing ? <NoteEditorSkeleton /> : <NotePreviewSkeleton />}
+    </section>
+  );
 };
 
 export default NoteSkeleton;
