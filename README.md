@@ -2,8 +2,6 @@ This is a version of the [Server-Components Demo-Application](https://github.com
 
 For simplicity sake there is no DB involved and the notes are just stored in plain memory and can be fetched & mutated via the api-routes implemented in `pages/api`.
 
-A live version of this project can be found [here](https://next13-notes-app.vercel.app/).
-
 ## Getting Started
 
 First, run the development server:
