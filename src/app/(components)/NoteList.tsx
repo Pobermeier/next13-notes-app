@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import { GetAllNotesResponse } from "pages/api/getAllNotes";
-import NoteListSkeleton from "app/(components)/NoteListSkeleton";
 import SidebarNote from "./SidebarNote";
 
 type NoteListProps = {
@@ -8,9 +6,9 @@ type NoteListProps = {
 };
 
 const fetchAllNotes = async () => {
-  const res = await fetch("http://localhost:3000/api/getAllNotes", { cache: "no-cache" });
+  const res = await fetch("http://localhost:3000/api/getAllNotes");
 
-  const data = res.json() as Promise<GetAllNotesResponse>;
+  const data = (await res.json()) as GetAllNotesResponse;
 
   return data;
 };
@@ -19,7 +17,7 @@ const NoteList = async ({ searchText }: NoteListProps) => {
   const { data: notes } = await fetchAllNotes();
 
   return (
-    <Suspense fallback={<NoteListSkeleton />}>
+    <>
       {notes.length > 0 ? (
         <ul className="notes-list">
           {notes.map((note) => (
@@ -33,7 +31,7 @@ const NoteList = async ({ searchText }: NoteListProps) => {
           {searchText ? `Couldn't find any notes titled "${searchText}".` : "No notes created yet!"}{" "}
         </div>
       )}
-    </Suspense>
+    </>
   );
 };
 

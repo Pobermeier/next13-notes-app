@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { Suspense } from "react";
 import NoteList from "app/(components)/NoteList";
+import NoteListSkeleton from "app/(components)/NoteListSkeleton";
 import "styles/globals.css";
 
 const NoteListComponent = NoteList as unknown as () => JSX.Element;
@@ -15,7 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        {" "}
         <div className="main">
           <section className="col sidebar">
             <section className="sidebar-header">
@@ -31,10 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </section>
             <section className="sidebar-menu" role="menubar"></section>
             <nav>
-              <NoteListComponent />
+              <Suspense fallback={<NoteListSkeleton />}>
+                <NoteListComponent />
+              </Suspense>
             </nav>
           </section>
-          <section className="col note-viewer">{children}</section>
+          <section className="col">{children}</section>
         </div>
       </body>
     </html>
