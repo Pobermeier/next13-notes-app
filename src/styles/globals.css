@@ -227,6 +227,7 @@ hr {
   cursor: pointer;
   font-weight: 700;
   outline-style: none;
+  line-height: 1.2;
 }
 .edit-button--solid,
 .delete-button--solid {
@@ -235,15 +236,18 @@ hr {
   border: none;
   margin-inline-start: 6px;
   transition: all 0.2s ease-in-out;
+  text-decoration: none;
 }
 .delete-button--solid {
   background: var(--red-25);
 }
 .edit-button--solid:hover {
   background: var(--secondary-blue);
+  text-decoration: none;
 }
 .delete-button--solid:hover {
   background: var(--red-25);
+  text-decoration: none;
 }
 .edit-button--solid:focus,
 .delete-button--solid:focus {
