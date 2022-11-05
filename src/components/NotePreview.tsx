@@ -2,10 +2,9 @@ import TextWithMarkdown from "./TextWithMarkdown";
 
 type NotePreviewProps = {
   body: string;
-  id: string;
 };
 
-const NotePreview = ({ body, id }: NotePreviewProps) => {
+const NotePreview = ({ body }: NotePreviewProps) => {
   return (
     <div className="note-preview">
       <TextWithMarkdown text={body} />
