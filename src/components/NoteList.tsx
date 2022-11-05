@@ -6,7 +6,7 @@ type NoteListProps = {
 };
 
 const fetchAllNotes = async () => {
-  const res = await fetch("http://localhost:3000/api/getAllNotes");
+  const res = await fetch("http://localhost:3000/api/getAllNotes", { cache: "no-cache" });
 
   const data = (await res.json()) as GetAllNotesResponse;
 

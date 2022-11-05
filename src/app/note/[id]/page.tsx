@@ -3,12 +3,8 @@ import { Note } from "data/notes";
 import { GetNoteResponse } from "pages/api/getNote";
 import NotePreview from "components/NotePreview";
 
-type NotePageProps = {
-  params: { id: string };
-};
-
 const fetchSingleNote = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/getNote?id=${id}`);
+  const res = await fetch(`http://localhost:3000/api/getNote?id=${id}`, { cache: "no-cache" });
 
   const data = (await res.json()) as GetNoteResponse;
 
@@ -19,7 +15,7 @@ const fetchSingleNote = async (id: string) => {
   return data;
 };
 
-const NotePage = async ({ params: { id } }: NotePageProps) => {
+const NotePage = async ({ params: { id } }: any) => {
   const { data: note } = await fetchSingleNote(id);
 
   const { id: noteId, title, body, updatedAt } = note as Note;
