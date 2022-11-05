@@ -4,6 +4,19 @@ The API for this project was implemented with JSON-server and can be found [here
 
 A hosted version of this project, can be found [here](https://next13-notes-app.vercel.app/note/m_LJ1lo7IdcNsNfs-CSF9), however the hosted app is currently not functioning properly due to some issues with routing and server components, so it is recommended to run the application on your local machine.
 
+## Features
+
+* Full CRUD (simple Note-taking app)
+* Next.js 13 app-directory
+* React 18 server-components
+* Nested layouts
+* Intermixing client- & server-components
+* Data-fetching inside server-components
+* Calling mutations inside Client-components and refreshing (server-side) router state
+* Definition of per-segment error boundaries & error handling
+* Definition of loading states per route-segment
+* Styling via global stylesheet
+
 ## Getting Started
 
 First, run the development server:
