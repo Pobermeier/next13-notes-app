@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { nanoid } from "nanoid";
 import { Note } from "models/note";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -7,8 +8,6 @@ import { useState } from "react";
 import NotePreview from "./NotePreview";
 
 const BASE_API_URI = "https://next13-notes-app-api-production.up.railway.app";
-
-type NotePayload = Omit<Note, "id">;
 
 type NoteEditorProps = {
   createdAt?: number;
@@ -26,14 +25,19 @@ export default function NoteEditor({
   const [title, setTitle] = useState(initialTitle);
   const [body, setBody] = useState(initialBody);
   const [isSaving, saveNote] = useMutation({
-    endpoint: noteId !== null ? `${BASE_API_URI}/notes/${noteId}` : `${BASE_API_URI}/notes`,
-    method: noteId !== null ? "PUT" : "POST",
+    endpoint: noteId != null ? `${BASE_API_URI}/notes/${noteId}` : `${BASE_API_URI}/notes`,
+    method: noteId != null ? "PUT" : "POST",
   });
 
   const router = useRouter();
 
+  const isTitleOrBodyEmpty = !title || !body;
+
   async function handleSave() {
+    if (isTitleOrBodyEmpty) return;
+
     const payload = {
+      id: noteId ?? nanoid(),
       title,
       body,
       createdAt: createdAt ?? new Date().getTime(),
@@ -76,7 +80,7 @@ export default function NoteEditor({
         <div className="note-editor-menu" role="menubar">
           <button
             className="note-editor-done"
-            disabled={Boolean(isSaving)}
+            disabled={Boolean(isSaving) || isTitleOrBodyEmpty}
             onClick={() => handleSave()}
             role="menuitem"
           >
@@ -106,7 +110,7 @@ function useMutation({
 }: {
   endpoint: string;
   method: string;
-}): [boolean, (payload: NotePayload) => Promise<Response | undefined>] {
+}): [boolean, (payload: Note) => Promise<Response | undefined>] {
   const [isSaving, setIsSaving] = useState(false);
   const [didError, setDidError] = useState(false);
   const [error, setError] = useState(null);
@@ -114,7 +118,7 @@ function useMutation({
     throw error;
   }
 
-  async function performMutation(payload: NotePayload) {
+  async function performMutation(payload: Note) {
     setIsSaving(true);
     try {
       const response = await fetch(endpoint, {
@@ -124,6 +128,7 @@ function useMutation({
           "Content-Type": "application/json",
         },
       });
+
       if (!response.ok) {
         throw new Error(await response.text());
       }

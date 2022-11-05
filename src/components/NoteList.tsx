@@ -6,9 +6,12 @@ type NoteListProps = {
 };
 
 const fetchAllNotes = async () => {
-  const res = await fetch("https://next13-notes-app-api-production.up.railway.app/notes", {
-    cache: "no-cache",
-  });
+  const res = await fetch(
+    "https://next13-notes-app-api-production.up.railway.app/notes?_sort=updatedAt&_order=desc",
+    {
+      cache: "no-cache",
+    },
+  );
 
   const notes = (await res.json()) as Note[];
 

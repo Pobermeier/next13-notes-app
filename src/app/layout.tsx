@@ -2,6 +2,7 @@
 import { Suspense } from "react";
 import NoteList from "components/NoteList";
 import NoteListSkeleton from "components/NoteListSkeleton";
+import EditButton from "components/EditButton";
 import "styles/globals.css";
 
 const NoteListComponent = NoteList as unknown as () => JSX.Element;
@@ -30,7 +31,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               />
               <strong>Next13 Notes</strong>
             </section>
-            <section className="sidebar-menu" role="menubar"></section>
+            <section className="sidebar-menu" role="menubar">
+              <EditButton>Create Note</EditButton>
+            </section>
             <nav>
               <Suspense fallback={<NoteListSkeleton />}>
                 <NoteListComponent />

@@ -259,6 +259,7 @@ hr {
   border: 1px solid var(--primary-blue);
   margin-inline-start: 12px;
   transition: all 0.1s ease-in-out;
+  text-decoration: none;
 }
 .edit-button--outline:disabled {
   opacity: 0.5;
