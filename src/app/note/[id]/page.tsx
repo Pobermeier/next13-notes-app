@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { Note } from "models/note";
 import NotePreview from "components/NotePreview";
+import DeleteButton from "components/DeleteButton";
 
 const fetchSingleNote = async (id: string) => {
   const res = await fetch(`https://next13-notes-app-api-production.up.railway.app/notes/${id}`, {
@@ -21,13 +22,14 @@ const NotePage = async ({ params: { id } }: any) => {
     <div className="note-viewer">
       <div className="note">
         <div className="note-header">
-          <h1 className="note-title">{title}</h1>
           <div className="note-menu" role="menubar">
             <small className="note-updated-at" role="status">
               Last updated on {format(updatedAtDate, "M/d/yy 'at' h:mm bb")}
             </small>
             {/* <EditButton noteId={id}>Edit</EditButton> */}
+            <DeleteButton id={noteId} />
           </div>
+          <h1 className="note-title">{title}</h1>
         </div>
         <NotePreview body={body} id={noteId} />
       </div>
