@@ -1,24 +1,20 @@
 import { format } from "date-fns";
-import { Note } from "data/notes";
-import { GetNoteResponse } from "pages/api/getNote";
+import { Note } from "models/note";
 import NotePreview from "components/NotePreview";
 
 const fetchSingleNote = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/getNote?id=${id}`, { cache: "no-cache" });
+  const res = await fetch(`https://next13-notes-app-api-production.up.railway.app/notes/${id}`, {
+    cache: "no-cache",
+  });
 
-  const data = (await res.json()) as GetNoteResponse;
+  const note = (await res.json()) as Note;
 
-  if (!data.success) {
-    throw new Error(data.data as string);
-  }
-
-  return data;
+  return note;
 };
 
 const NotePage = async ({ params: { id } }: any) => {
-  const { data: note } = await fetchSingleNote(id);
+  const { id: noteId, title, body, updatedAt } = await fetchSingleNote(id);
 
-  const { id: noteId, title, body, updatedAt } = note as Note;
   const updatedAtDate = new Date(updatedAt);
 
   return (

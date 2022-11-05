@@ -1,4 +1,4 @@
-import { GetAllNotesResponse } from "pages/api/getAllNotes";
+import { Note } from "models/note";
 import SidebarNote from "./SidebarNote";
 
 type NoteListProps = {
@@ -6,15 +6,17 @@ type NoteListProps = {
 };
 
 const fetchAllNotes = async () => {
-  const res = await fetch("http://localhost:3000/api/getAllNotes", { cache: "no-cache" });
+  const res = await fetch("https://next13-notes-app-api-production.up.railway.app/notes", {
+    cache: "no-cache",
+  });
 
-  const data = (await res.json()) as GetAllNotesResponse;
+  const notes = (await res.json()) as Note[];
 
-  return data;
+  return notes;
 };
 
 const NoteList = async ({ searchText }: NoteListProps) => {
-  const { data: notes } = await fetchAllNotes();
+  const notes = await fetchAllNotes();
 
   return (
     <>

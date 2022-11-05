@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { DeleteNoteResponse } from "pages/api/deleteNote";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import TextWithMarkdown from "./TextWithMarkdown";
 
 type NotePreviewProps = {
@@ -8,16 +8,15 @@ type NotePreviewProps = {
   id: string;
 };
 
-const deleteNote = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/deleteNote?id=${id}`);
+const deleteNote = async (id: string, router: AppRouterInstance) => {
+  const res = await fetch(`https://next13-notes-app-api-production.up.railway.app/notes/${id}`, {
+    method: "delete",
+  });
 
-  const data = (await res.json()) as DeleteNoteResponse;
-
-  if (!data.success) {
-    throw new Error(data.data as string);
+  if (res.ok) {
+    router.push("/");
+    router.refresh();
   }
-
-  return data;
 };
 
 const NotePreview = ({ body, id }: NotePreviewProps) => {
@@ -27,15 +26,7 @@ const NotePreview = ({ body, id }: NotePreviewProps) => {
     <div className="note-preview">
       <TextWithMarkdown text={body} />
       <br />
-      <button
-        onClick={async () => {
-          await deleteNote(id);
-          router.push("/");
-          router.refresh();
-        }}
-      >
-        Delete Note
-      </button>
+      <button onClick={() => deleteNote(id, router)}>Delete Note</button>
     </div>
   );
 };
