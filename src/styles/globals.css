@@ -218,7 +218,8 @@ hr {
   margin-inline-end: 10px;
 }
 
-.edit-button {
+.edit-button,
+.delete-button {
   border-radius: 100px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -227,17 +228,25 @@ hr {
   font-weight: 700;
   outline-style: none;
 }
-.edit-button--solid {
+.edit-button--solid,
+.delete-button--solid {
   background: var(--primary-blue);
   color: var(--white);
   border: none;
   margin-inline-start: 6px;
   transition: all 0.2s ease-in-out;
 }
+.delete-button--solid {
+  background: var(--red-25);
+}
 .edit-button--solid:hover {
   background: var(--secondary-blue);
 }
-.edit-button--solid:focus {
+.delete-button--solid:hover {
+  background: var(--red-25);
+}
+.edit-button--solid:focus,
+.delete-button--solid:focus {
   box-shadow: var(--outline-box-shadow-contrast);
 }
 .edit-button--outline {
@@ -445,16 +454,19 @@ ul.notes-list {
 }
 .note-header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap-reverse;
   margin-inline-start: -12px;
+  width: 100%;
 }
 .note-menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-grow: 1;
+  width: 100%;
 }
 .note-title {
   line-height: 1.3;
