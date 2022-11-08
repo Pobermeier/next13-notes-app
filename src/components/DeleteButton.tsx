@@ -9,9 +9,10 @@ const deleteNote = async (id: string, router: AppRouterInstance) => {
     method: "delete",
   });
 
+  router.refresh();
+
   if (res.ok) {
-    router.push("/");
-    router.refresh();
+    router.replace("/");
   }
 };
 

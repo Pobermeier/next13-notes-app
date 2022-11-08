@@ -44,10 +44,10 @@ export default function NoteEditor({
       updatedAt: new Date().getTime(),
     };
     const response = await saveNote(payload);
+    router.refresh();
 
     if (response?.ok) {
-      router.push("/");
-      router.refresh();
+      router.replace("/");
     }
   }
 
