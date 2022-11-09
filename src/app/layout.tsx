@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import { Suspense } from "react";
-import NoteList from "components/NoteList";
+import NoteList, { NoteListProps } from "components/NoteList";
 import NoteListSkeleton from "components/NoteListSkeleton";
 import EditButton from "components/EditButton";
+import SearchField from "components/SearchField";
 import "styles/globals.css";
 
-const NoteListComponent = NoteList as unknown as () => JSX.Element;
+const NoteListComponent = NoteList as unknown as (props: NoteListProps) => JSX.Element;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -32,7 +33,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <strong>Next13 Notes</strong>
             </section>
             <section className="sidebar-menu" role="menubar">
-              <EditButton>Create Note</EditButton>
+              <SearchField />
+              <EditButton>Add</EditButton>
             </section>
             <nav>
               <Suspense fallback={<NoteListSkeleton />}>
