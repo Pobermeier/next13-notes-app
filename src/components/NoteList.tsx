@@ -1,13 +1,13 @@
 import { Note } from "models/note";
 import SidebarNote from "./SidebarNote";
 
-type NoteListProps = {
+export type NoteListProps = {
   searchText?: string;
 };
 
-const fetchAllNotes = async () => {
+const fetchAllNotes = async (searchQuery: string = "") => {
   const res = await fetch(
-    "https://next13-notes-app-api-production.up.railway.app/notes?_sort=updatedAt&_order=desc",
+    `https://next13-notes-app-api-production.up.railway.app/notes?_sort=updatedAt&_order=desc&q=${searchQuery}`,
     {
       cache: "no-cache",
     },
