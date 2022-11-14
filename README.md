@@ -2,7 +2,7 @@ This is a version of the [Server-Components Demo-Application](https://github.com
 
 The API for this project was implemented with JSON-server and can be found [here](https://github.com/Pobermeier/next13-notes-app-api).
 
-A hosted version of this project, can be found [here](https://next13-notes-app.vercel.app/note/m_LJ1lo7IdcNsNfs-CSF9), however the hosted app is currently not functioning properly due to some issues with routing and server components, so it is recommended to run the application on your local machine.
+A hosted version of this project, can be found [here](https://next13-notes-app.vercel.app/note/m_LJ1lo7IdcNsNfs-CSF9).
 
 ## Features
 
