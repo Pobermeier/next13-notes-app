@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { startTransition, useState } from "react";
 import { nanoid } from "nanoid";
 import { Note } from "models/note";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 import NotePreview from "./NotePreview";
 
@@ -44,10 +44,12 @@ export default function NoteEditor({
       updatedAt: new Date().getTime(),
     };
     const response = await saveNote(payload);
-    router.refresh();
 
     if (response?.ok) {
-      router.replace("/");
+      startTransition(() => {
+        router.replace("/");
+        router.refresh();
+      });
     }
   }
 
