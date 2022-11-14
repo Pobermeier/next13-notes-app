@@ -6,7 +6,7 @@ import EditButton from "components/EditButton";
 
 const fetchSingleNote = async (id: string) => {
   const res = await fetch(`https://next13-notes-app-api-production.up.railway.app/notes/${id}`, {
-    cache: "no-cache",
+    cache: "no-store",
   });
 
   const note = (await res.json()) as Note;
